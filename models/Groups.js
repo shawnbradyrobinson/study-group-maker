@@ -29,32 +29,6 @@ Groups.init(
             allowNull: false,
         },
 
-        group_creator: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            foreignKey: true,
-        },
-
-        member_1: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        member_2: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        member_3: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        member_4: {
-            type: DataTypes.STRING, 
-            allowNull: false,
-        },
-
         zoom_link: {
             type: DataTypes.STRING,
             allowNull: false,
