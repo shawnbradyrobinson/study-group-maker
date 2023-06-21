@@ -18,6 +18,11 @@ Groups.init(
             allowNull: false, 
         },
 
+        group_description: {
+            type: DataTypes.STRING, 
+            allowNull: true, 
+        },
+
         study_topic: {
             type: DataTypes.INTEGER,
             allowNull: false,

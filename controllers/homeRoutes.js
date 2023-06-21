@@ -11,12 +11,12 @@ router.get('/', async (req, res) => {
   res.render('homepage', {groups}); 
 });
 
-router.get('/projects/:id', async (req, res) => {
-   const foundProject = await Project.findByPk(req.params.id);
+// router.get('/projects/:id', async (req, res) => {
+//    const foundProject = await Project.findByPk(req.params.id);
 
-   const project = foundProject.get({plain: true});
-   res.render('project', {project});
+//    const project = foundProject.get({plain: true});
+//    res.render('project', {project});
 
-  });
+//   });
 
-module.exports = router;
+// module.exports = router;
