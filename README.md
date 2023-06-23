@@ -1,3 +1,4 @@
 # study-group-maker
 
-# Nam Nguyen
+## Nam Nguyen
+## Shawn Robinson
