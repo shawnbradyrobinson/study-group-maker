@@ -16,13 +16,13 @@ Enrollments.init (
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        foreignKey: true, //references Users id
+        //foreignKey: true, //references Users id
     },
 
     group_id: {
         type: DataTypes.INTEGER, 
         allowNull: false,
-        foreignKey: true, //references Groups id 
+        //foreignKey: true, //references Groups id 
     },
 
 

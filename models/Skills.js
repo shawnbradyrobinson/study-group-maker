@@ -12,7 +12,7 @@ Skills.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        level_name: {
+        skill_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
