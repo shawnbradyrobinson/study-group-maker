@@ -1,4 +1,4 @@
-const { Groups } = require("../models/Groups");
+const { Groups } = require("../models");
 
 const groupsdata = [
     {
