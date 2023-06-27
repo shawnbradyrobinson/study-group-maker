@@ -26,7 +26,11 @@ Groups.init(
         study_topic: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            //foreignKey: true,
+            // references: {
+            //     model: 'skills',
+            //     key: 'id',
+            //     unique: false
+            // }
         },
 
         skill_level: {
