@@ -15,7 +15,6 @@ router.get('/login', (req, res) => {
   console.log("hitting the login page");
   res.render('login');
 
-
 });
 
 module.exports = router;
