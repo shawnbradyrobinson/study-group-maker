@@ -1,22 +1,22 @@
 const sequelize = require("../config/connection");
-const Users = require("../models/Users");
-// const seedUsers = require("./usersData");
-// const seedSkills = require("./skillsData");
-// const seedGroups = require("./groupsData");
+const seedUsers = require("./usersData");
+const seedSkills = require("./skillsData");
+const seedGroups = require("./groupsData");
+const seedEnrollments = require("./enrollmentsData")
 
 const seedAll = async () => {
     await sequelize.sync({force: true});
 
-    await Users.bulkCreate(usersdata);
+    await seedUsers();
 
-    // await seedSkills();
+    await seedSkills();
 
-    // await seedGroups();
+    await seedGroups();
+
+    await seedEnrollments();
 
     process.exit(0);
 
-
-
 };
-console.log(Users);
-// seedAll();
+
+seedAll();
