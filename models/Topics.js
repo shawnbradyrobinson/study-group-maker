@@ -2,9 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection");
 
-class Skills extends Model {}
+class Topics extends Model {}
 
-Skills.init(
+Topics.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,7 +12,7 @@ Skills.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        skill_name: {
+        topic_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -23,9 +23,9 @@ Skills.init(
         timestamps: false, 
         freezeTableName: true,
         underscored: true,
-        modelName: "Skills",
+        modelName: "topics",
     }
 
 );
 
-module.exports = Skills; 
+module.exports = Topics; 
