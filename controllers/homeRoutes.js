@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Groups} = require("../models/");
+const { Groups } = require("../models/");
 
 router.get('/', async (req, res) => {
   

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const fs = require('fs');
 
-const { Group } = require('../../models');
+const { Groups } = require('../../models');
 
 router.get('/', (req, res, next) => {
 

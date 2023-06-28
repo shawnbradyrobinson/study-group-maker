@@ -1,0 +1,21 @@
+{{#each groups as |group| }}
+<div>
+    <div>
+        <h2>
+            <a href="/groups/{{group.id}}">{{group.group_name}}</a>
+        </h2>
+        <p>
+            Study Topic: {{group.study_topic}}!
+        </p>
+        <p>
+            Skill Level: {{group.skill_level}}
+        </p>
+        <p>
+            Time to Meet: {{group.meet_time}}
+        </p>
+        <p>
+            Created by: {{group.user.name}}
+        </p>
+    </div>
+</div>
+{{/each}}
