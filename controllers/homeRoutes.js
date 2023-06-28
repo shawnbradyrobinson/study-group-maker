@@ -17,4 +17,15 @@ router.get('/login', (req, res) => {
 
 });
 
+router.get('/groups', async (req, res) => {
+  
+  const records = await Groups.findAll({});
+
+  const groups = records.map((record) => record.get({plain: true}));
+
+  console.log(records);
+  res.render('groups', {groups}); 
+});
+
+
 module.exports = router;

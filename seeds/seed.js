@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 const seedUsers = require("./usersData");
-const seedSkills = require("./skillsData");
+const seedTopics = require("./topicsData");
 const seedGroups = require("./groupsData");
 const seedEnrollments = require("./enrollmentsData")
 
@@ -9,7 +9,7 @@ const seedAll = async () => {
 
     await seedUsers();
 
-    await seedSkills();
+    await seedTopics();
 
     await seedGroups();
 

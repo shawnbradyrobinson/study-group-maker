@@ -1,5 +1,5 @@
 const Users = require('./Users');
-const Skills = require('./Skills');
+const Topics = require('./Topics');
 const Enrollments = require('./Enrollments');
 const Groups = require('./Groups');
 
@@ -19,12 +19,13 @@ Groups.belongsToMany(Users, {
   as: 'group_id'
 });
 
-Groups.hasOne(Skills, {
-  foreignKey: 'study_topic'
-});
+Topics.hasMany(Groups, {
+  foreignKey: 'topic_id',
+  onDelete: 'CASCADE'
+})
 
-// Skills.belongsToMany(Groups, {
-//   foreignKey: 'study_topic'
-// })
+Groups.belongsTo(Topics, {
+  foreignKey: 'topic_id'
+})
 
-module.exports = { Users, Skills, Enrollments, Groups };
+module.exports = { Users, Topics, Enrollments, Groups };
