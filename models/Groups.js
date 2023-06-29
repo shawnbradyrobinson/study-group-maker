@@ -23,10 +23,14 @@ Groups.init(
             allowNull: true, 
         },
 
-        study_topic: {
+        topic_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            //foreignKey: true,
+            references: {
+                model: 'topics',
+                key: 'id',
+                unique: false
+            }
         },
 
         skill_level: {
@@ -50,7 +54,7 @@ Groups.init(
         timestamps: false, 
         freezeTableName: true,
         underscored: true,
-        modelName: "Study_Groups",
+        modelName: "study_groups",
     }
 
 );

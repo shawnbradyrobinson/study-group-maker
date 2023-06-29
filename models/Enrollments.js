@@ -16,13 +16,21 @@ Enrollments.init (
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        //foreignKey: true, //references Users id
+        references: {
+            model: 'users',
+            key: 'id',
+            unique: false
+        }
     },
 
     group_id: {
         type: DataTypes.INTEGER, 
         allowNull: false,
-        //foreignKey: true, //references Groups id 
+        references: {
+            model: 'study_groups',
+            key: 'id',
+            unique: false
+        }
     },
 
 
@@ -33,7 +41,7 @@ Enrollments.init (
     timestamps: false, 
     freezeTableName: true, 
     underscored: true,
-    modelName: "Enrollments"
+    modelName: "enrollments"
 
 }
 
