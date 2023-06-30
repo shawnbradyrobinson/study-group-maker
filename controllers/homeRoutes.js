@@ -36,23 +36,22 @@ router.get('/groups', async (req, res) => {
 
 router.get('/profile', async (req, res) => {
   
-  const records = await Groups.findAll({
-    include: [
-      {
-        model: Topics,
-        attributes: ['topic_name'],
-      },
-      {
-        model: Users,
-        attributes: ['first_name']
-      }
-    ]
+  const records = await Topics.findAll({
+
+      // {
+      //   model: Users,
+      //   where: {
+      //     id: 1,
+      //     attributes: ['first_name']
+      //   },
+      // },
+
   });
 
-  const groups = records.map((record) => record.get({plain: true}));
+  const topics = records.map((record) => record.get({plain: true}));
 
   console.log(records);
-  res.render('profile', {groups}); 
+  res.render('profile', { topics }); 
 });
 
 
