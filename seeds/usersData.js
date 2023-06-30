@@ -38,6 +38,9 @@ const usersdata = [
     }
 ];
 
-const seedUsers = () => Users.bulkCreate(usersdata);
+const seedUsers = () => Users.bulkCreate(usersdata, {
+    individualHooks: true,
+    returning: true,
+  });
 
 module.exports = seedUsers; 

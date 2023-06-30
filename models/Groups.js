@@ -47,6 +47,16 @@ Groups.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+
+        // created_by: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'topics',
+        //         key: 'id',
+        //         unique: false
+        //     }
+        // }
     },
 
     {

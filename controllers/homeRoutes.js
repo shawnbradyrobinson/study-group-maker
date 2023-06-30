@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Groups, Topics } = require("../models/");
+const { Groups, Topics, Users } = require("../models/");
 
 router.get('/', async (req, res) => {
   
@@ -32,6 +32,27 @@ router.get('/groups', async (req, res) => {
 
   console.log(records);
   res.render('groups_list', {groups}); 
+});
+
+router.get('/profile', async (req, res) => {
+  
+  const records = await Groups.findAll({
+    include: [
+      {
+        model: Topics,
+        attributes: ['topic_name'],
+      },
+      {
+        model: Users,
+        attributes: ['first_name']
+      }
+    ]
+  });
+
+  const groups = records.map((record) => record.get({plain: true}));
+
+  console.log(records);
+  res.render('profile', {groups}); 
 });
 
 
