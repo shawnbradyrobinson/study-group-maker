@@ -14,6 +14,7 @@ next()
     //Create a new group
     //This code is currently taken directly from Week 14 example 19 Ins-Middleware, so if there's something that doesn't fit, that's probably why...
     try {
+      console.log(req.body);
       const newGroupData = await Groups.create({
         //id? id: req.body.id,
         group_name: req.body.group_name,
