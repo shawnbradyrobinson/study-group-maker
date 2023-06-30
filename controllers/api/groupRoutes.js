@@ -10,7 +10,7 @@ console.log("api/groups message");
 res.send("hi");
 next()
 
-}).post('/', (req, res) => {
+}).post('/', async (req, res) => {
     //Create a new group
     //This code is currently taken directly from Week 14 example 19 Ins-Middleware, so if there's something that doesn't fit, that's probably why...
     try {
@@ -36,18 +36,6 @@ next()
       res.status(500).json(err);
     }
   });
-
-
-
-
-
-
-
-});
-
-
-
-
 
 
 
