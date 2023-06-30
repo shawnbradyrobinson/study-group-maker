@@ -1,0 +1,41 @@
+<div>
+    <h2>Ready to study, {{first_name}}?!</h2>
+</div>
+
+<section>
+    <h3>Make a Study Group!</h3>
+
+    <form id="create_group" action="">
+        <div>
+            <label for="group_name">Group Name: </label>
+            <input type="text" name="group_name" id="group_name">
+        </div>
+        <div>
+            <label for="group_description">Group Description: </label>
+            <input type="text" name="group_description" id="group_description">
+        </div>
+        <div>
+            <label for="topic_id">Topic: </label>
+            <select name="topic_id" id="topic_id">
+                {{#each topics as |topic| }}<option value="{{topic_id}}">{{topic_name}}</option>{{/each}}
+            </select>
+        </div>
+        <div>
+            <label for="skill_level">Skill Level: </label>
+            <select name="skill_level" id="skill_level">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+        </div>
+        <div>
+            <label for="zoom_link">Zoom Link: </label>
+            <input type="text" name="zoom_link" id="zoom_link">
+        </div>
+        <div>
+            <label for="meet_time">Meet Time: </label>
+            <input type="text" name="meet_time" id="meet_time">
+        </div>
+        <button type="button">Submit</button>
+    </form>
+</section>
