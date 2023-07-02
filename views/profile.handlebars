@@ -17,7 +17,7 @@
         <div>
             <label for="topic_id">Topic: </label>
             <select name="topic_id" id="topic_id">
-                {{#each topics as |topic| }}<option value="{{topic_id}}">{{topic_name}}</option>{{/each}}
+                {{#each topics as |topic| }}<option value="{{id}}">{{topic_name}}</option>{{/each}}
             </select>
         </div>
         <div>
@@ -38,8 +38,5 @@
         </div>
         <button type="submit">Submit</button>
     </form>
-</section>
-
-<section>
-
+    <script src="./js/groups.js"></script>
 </section>
