@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Groups, Topics, Users } = require("../models/");
+const { Groups, Topics, Users, Enrollments } = require("../models/");
 
 router.get('/', async (req, res) => {
   
@@ -37,7 +37,7 @@ router.get('/groups', async (req, res) => {
 
 router.get('/profile', async (req, res) => {
   
-  const records = await Topics.findAll({
+  const recordsTopics = await Topics.findAll({
 
       // {
       //   model: Users,
@@ -49,10 +49,24 @@ router.get('/profile', async (req, res) => {
 
   });
 
-  const topics = records.map((record) => record.get({plain: true}));
+  const recordsEnrollments = await Enrollments.findAll({
+    where: {
+      user_id: 1,
+    }, 
+    include: {
+      model: Groups,
+      attributes: ['group_name', 'group_description', 'skill_level', 'zoom_link', 'meet_time'],
+    }
 
-  console.log(records);
-  res.render('profile', { topics }); 
+  });
+
+  const topics = recordsTopics.map((recordTopic) => recordTopic.get({plain: true}));
+  const enrollments = recordsEnrollments.map((recordEnrollment) => recordEnrollment.get({plain: true}));
+
+
+  console.log(recordTopic);
+  console.log(recordEnrollment);
+  res.render('profile', { topics, enrollments }); 
 });
 
 router.get('/groups/:id', async (req, res) => {
@@ -71,5 +85,22 @@ router.get('/groups/:id', async (req, res) => {
   console.log(recordData);
   res.render('group', { group }); 
 })
+
+router.get('/enrollments/:id', async (req, res) => {
+  const records = await Enrollments.findAll({
+    where: {
+      user_id: req.params['id']
+    }
+
+  });
+  const enrollments = records.map((record) => record.get({plain: true}));
+
+  res.send(records);
+  
+
+
+});
+
+
 
 module.exports = router;
