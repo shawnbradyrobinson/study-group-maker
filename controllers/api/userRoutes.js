@@ -1,10 +1,14 @@
 const router = require('express').Router();
-const fs = require('fs');
 const { Users } = require("../../models");
 
 router.get('/', (req, res) => {
-    console.log("Get from the api/users");
-    res.send("hi");
+    try{
+      console.log("Get from the api/users");
+    res.status(200).send("Get from the api/users");
+    } catch {
+      console.log(err);
+      res.status(500).json(err);
+    }
 })
 .post('/', async (req, res) => {
     //Create a new user
@@ -30,12 +34,6 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     }
   });
-
-  router.get('/data', (req, res) => {
-
-    //findByPK or findAll 
-    res.send(sequelize.models.User);
-  })
 
   
 

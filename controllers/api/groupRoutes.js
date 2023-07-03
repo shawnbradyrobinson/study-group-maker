@@ -1,14 +1,17 @@
 const router = require('express').Router();
-const fs = require('fs');
 
 const { Groups } = require('../../models');
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
+try {
+  console.log("api/groups message");
 
-console.log("api/groups message");
+res.status(200).send("message sent from api/groups");
+} catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+}
 
-res.send("hi");
-next()
 
 }).post('/', async (req, res) => {
     //Create a new group
@@ -37,17 +40,5 @@ next()
       res.status(500).json(err);
     }
   });
-
-
-
-router.get('/data', (req, res, next) => {
-    console.log("hi there");
-    const data = fs.readFileSync("./seeds/json_data/groups_data.json", "utf8");
-
-    res.json(data);
-    
-    }).post('/data', (req, res, next) => {
-    });
-//JSON.parse(data) will be used to 
 
 module.exports = router; 
