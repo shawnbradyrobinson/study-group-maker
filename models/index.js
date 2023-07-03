@@ -28,4 +28,6 @@ Groups.belongsTo(Topics, {
   foreignKey: 'topic_id'
 })
 
+
+
 module.exports = { Users, Topics, Enrollments, Groups };
