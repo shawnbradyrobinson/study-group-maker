@@ -38,5 +38,25 @@
         </div>
         <button type="submit">Submit</button>
     </form>
+
+    <div>
+        <div>
+            <h2>
+                <a href="/groups/{{group.id}}">{{group.group_name}}</a>
+            </h2>
+            <p>
+                Study Topic: {{group.topic.topic_name}}!
+            </p>
+            <p>
+                Skill Level: {{group.skill_level}}
+            </p>
+            <p>
+                Time to Meet: {{group.meet_time}}
+            </p>
+            <p>
+                Created by: {{group.user.name}}
+            </p>
+        </div>
+    </div>
     <script src="./js/groups.js"></script>
 </section>
