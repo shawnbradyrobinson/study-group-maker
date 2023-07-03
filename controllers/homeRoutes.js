@@ -34,19 +34,6 @@ router.get('/groups', async (req, res) => {
   res.render('groups_list', {groups}); 
 });
 
-router.get('/enrollments', async (req, res) => {
-  const records = await Enrollments.findAll({
-
-
-  });
-
-  const enrollments = records.map((record) => record.get({plain: true}));
-
-  console.log(records);
-  res.render('groups_list', {enrollments});
-
-
-});
 
 router.get('/profile', async (req, res) => {
   
@@ -82,6 +69,22 @@ router.get('/profile', async (req, res) => {
   res.render('profile', { topics, enrollments }); 
 });
 
+router.get('/groups/:id', async (req, res) => {
+
+  const recordData = await Groups.findByPk(req.params.id, {
+    include: [
+      {
+        model: Topics,
+        attributes: ['topic_name'],
+      }
+    ]
+  });
+
+  const group = recordData.get({ plain: true });
+
+  console.log(recordData);
+  res.render('group', { group }); 
+})
 
 router.get('/enrollments/:id', async (req, res) => {
   const records = await Enrollments.findAll({
