@@ -7,20 +7,18 @@
     const skill_level = document.querySelector('#skill_level').value.trim();
     const zoom_link = document.querySelector('#zoom_link').value.trim();
     const meet_time = document.querySelector('#meet_time').value.trim();
-    // console.log(group_name, topic_id, skill_level, zoom_link, meet_time)
-    //if (group_name && group_description && topic_id && skill_level && zoom_link && meet_time) {
+    if (group_name && group_description && topic_id && skill_level && zoom_link && meet_time) {
       const response = await fetch('/api/groups', {
         method: 'POST',
         body: JSON.stringify({ group_name, group_description, topic_id, skill_level, zoom_link, meet_time }),
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        // If successful, redirect the browser to the profile page
         document.location.replace('/groups');
       } else {
         alert(response.statusText);
       }
-    //}
+    }
   };
   
   document

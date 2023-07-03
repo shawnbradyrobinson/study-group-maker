@@ -49,24 +49,20 @@ router.get('/profile', async (req, res) => {
 
   });
 
-  const recordsEnrollments = await Enrollments.findAll({
-    where: {
-      user_id: 1,
-    }, 
-    include: {
-      model: Groups,
-      attributes: ['group_name', 'group_description', 'skill_level', 'zoom_link', 'meet_time'],
-    }
+  const recordsEnrollments = await Users.findByPk(3, {
+    include: [{ model: Groups, through: Enrollments, as: 'user_id' }]
+
 
   });
 
   const topics = recordsTopics.map((recordTopic) => recordTopic.get({plain: true}));
-  const enrollments = recordsEnrollments.map((recordEnrollment) => recordEnrollment.get({plain: true}));
+  // const enrollments = recordsEnrollments.map((recordEnrollment) => recordEnrollment.get({plain: true}));
 
 
-  console.log(recordTopic);
-  console.log(recordEnrollment);
-  res.render('profile', { topics, enrollments }); 
+  // console.log(recordsTopics);
+  // console.log(recordsEnrollments);
+  // res.render('profile', { topics,/* enrollments */}); 
+  res.send(recordsEnrollments);
 });
 
 router.get('/groups/:id', async (req, res) => {
@@ -87,13 +83,12 @@ router.get('/groups/:id', async (req, res) => {
 })
 
 router.get('/enrollments/:id', async (req, res) => {
-  const records = await Enrollments.findAll({
-    where: {
-      user_id: req.params['id']
-    }
+  const records = await Groups.findByPk(req.params.id,{
+    include: [{ model: Users, through: Enrollments, as: 'group_id' }]
+
 
   });
-  const enrollments = records.map((record) => record.get({plain: true}));
+  //const enrollments = records.map((record) => record.get({plain: true}));
 
   res.send(records);
   
