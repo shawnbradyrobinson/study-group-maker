@@ -23,7 +23,7 @@ Enrollments.init (
         }
     },
 
-    group_id: {
+    study_group_id: {
         type: DataTypes.INTEGER, 
         allowNull: false,
         references: {
