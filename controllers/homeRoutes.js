@@ -51,7 +51,7 @@ router.get('/profile', async (req, res) => {
 
   const recordsEnrollments = await Enrollments.findAll({
     where: {
-      user_id: 1,
+      user_id: req.session.user_id,
     }, 
     include: {
       model: Groups,
@@ -86,9 +86,6 @@ router.get('/groups/:id', async (req, res) => {
   res.render('group', { group }); 
 })
 
-<<<<<<< HEAD
-module.exports = router;
-=======
 router.get('/enrollments/:id', async (req, res) => {
   const records = await Enrollments.findAll({
     where: {
@@ -107,4 +104,3 @@ router.get('/enrollments/:id', async (req, res) => {
 
 
 module.exports = router;
->>>>>>> 55759aea2e1ab3c5055e2a768c02ae4f58c587eb
