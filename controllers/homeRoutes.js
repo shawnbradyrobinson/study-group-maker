@@ -58,7 +58,7 @@ router.get('/groups', loginAuthentication, async (req, res) => {
 
 router.get('/profile', loginAuthentication, async (req, res) => {
   try{
-    const recordsTopics = await Topics.findAll({});
+  const recordsTopics = await Topics.findAll({});
 
   const recordsEnrollments = await Users.findByPk(1, {
     attributes: { exclude: ['password'] },
