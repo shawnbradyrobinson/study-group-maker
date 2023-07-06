@@ -1,5 +1,5 @@
 <div>
-    <h2>Ready to study, {{first_name}}?!</h2>
+    <h2>Ready to study, {{enrollments.first_name}}?!</h2>
 </div>
 
 <section>
@@ -39,9 +39,9 @@
         <button type="submit">Submit</button>
     </form>
 
-    {{#if groups.length}}
+    {{#if enrollments.user_id.length}}
     <div>
-        {{#each groups as |group|}}
+        {{#each enrollments.user_id as |group|}}
         <div>
             <div>
                 <h2>
