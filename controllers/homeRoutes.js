@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Groups, Topics, Users, Enrollments } = require("../models");
+const loginAuthentication = require('../utils/authentication');
 
 router.get('/', async (req, res) => {
   try {
@@ -8,7 +9,10 @@ router.get('/', async (req, res) => {
   const groups = records.map((record) => record.get({plain: true}));
 
   console.log(records);
-  res.status(200).render('homepage', {groups}); 
+  res.status(200).render('homepage', {
+    groups,
+    loggedIn: req.session.loggedIn
+  }); 
   } catch (err){
     console.log(err);
     res.status(500).json(err);
@@ -17,7 +21,13 @@ router.get('/', async (req, res) => {
 
 router.get('/login', (req, res) => {
   try{
-    console.log("hitting the login page");
+
+    if(req.session.loggedIn) {
+      res.redirect('/profile');
+
+      return;
+    }
+
     res.render('login');
   } catch(err) {
     console.log(err);
@@ -25,7 +35,7 @@ router.get('/login', (req, res) => {
   }
 });
 
-router.get('/groups', async (req, res) => {
+router.get('/groups', loginAuthentication, async (req, res) => {
   try {
     const records = await Groups.findAll({
       include: [
@@ -46,34 +56,26 @@ router.get('/groups', async (req, res) => {
   }
 });
 
-router.get('/profile', async (req, res) => {
+router.get('/profile', loginAuthentication, async (req, res) => {
   try{
-    const recordsTopics = await Topics.findAll({
+    const recordsTopics = await Topics.findAll({});
 
-      // {
-      //   model: Users,
-      //   where: {
-      //     id: 1,
-      //     attributes: ['first_name']
-      //   },
-      // },
-
-  });
-
-  const recordsEnrollments = await Users.findByPk(3, {
-    include: [{ model: Groups, through: Enrollments, as: 'user_id' }]
+  // const recordsEnrollments = await Users.findByPk(req.session.user_id, {
+  //   attributes: { exclude: ['password'] },
+  //   include: [{ model: Groups, through: Enrollments, as: 'user_id' }]
 
 
-  });
+  // });
 
-  const topics = recordsTopics.map((recordTopic) => recordTopic.get({plain: true}));
-  // const enrollments = recordsEnrollments.map((recordEnrollment) => recordEnrollment.get({plain: true}));
+  const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
+  // const enrollments = recordsEnrollments.map((recordsEnrollments) => recordsEnrollments.get({ plain: true }));
 
+  res.render('profile', { 
+    topics,
+    // ...enrollments,
+    loggedIn: true
+  }); 
 
-  // console.log(recordsTopics);
-  // console.log(recordsEnrollments);
-  // res.render('profile', { topics,/* enrollments */}); 
-  res.send(recordsEnrollments);
   }catch (err){
     console.log(err);
     res.status(500).json(err);
@@ -81,7 +83,7 @@ router.get('/profile', async (req, res) => {
   
 });
 
-router.get('/groups/:id', async (req, res) => {
+router.get('/groups/:id', loginAuthentication, async (req, res) => {
   try{
     const recordData = await Groups.findByPk(req.params.id, {
       include: [
