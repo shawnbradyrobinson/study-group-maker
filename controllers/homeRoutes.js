@@ -60,19 +60,19 @@ router.get('/profile', loginAuthentication, async (req, res) => {
   try{
     const recordsTopics = await Topics.findAll({});
 
-  // const recordsEnrollments = await Users.findByPk(req.session.user_id, {
-  //   attributes: { exclude: ['password'] },
-  //   include: [{ model: Groups, through: Enrollments, as: 'user_id' }]
+  const recordsEnrollments = await Users.findByPk(1, {
+    attributes: { exclude: ['password'] },
+    include: [{ model: Groups, through: Enrollments, as: 'user_id' }]
 
 
-  // });
+  });
 
   const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
-  // const enrollments = recordsEnrollments.map((recordsEnrollments) => recordsEnrollments.get({ plain: true }));
-
+  const enrollments = recordsEnrollments.get({ plain: true });
+  console.log(enrollments);
   res.render('profile', { 
     topics,
-    // ...enrollments,
+    enrollments,
     loggedIn: true
   }); 
 
