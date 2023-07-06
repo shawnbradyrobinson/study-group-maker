@@ -20,6 +20,28 @@
       }
     }
   };
+
+const deleteGroupHandler = async (event) => {
+
+  if(event.target.hasAttribute('data-id')) {
+    
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/groups/${id}`, {
+
+      method: 'DELETE',
+    });
+
+    if(response.ok) {
+
+      document.location.replace('/profile');
+
+    } else {
+
+      alert('Could not delete project.')
+    }
+  }
+};
   
   document
     .querySelector('#create_group')

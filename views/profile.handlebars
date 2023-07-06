@@ -39,24 +39,34 @@
         <button type="submit">Submit</button>
     </form>
 
+    {{#if groups.length}}
     <div>
+        {{#each groups as |group|}}
         <div>
-            <h2>
-                <a href="/groups/{{group.id}}">{{group.group_name}}</a>
-            </h2>
-            <p>
-                Study Topic: {{group.topic.topic_name}}!
-            </p>
-            <p>
-                Skill Level: {{group.skill_level}}
-            </p>
-            <p>
-                Time to Meet: {{group.meet_time}}
-            </p>
-            <p>
-                Created by: {{group.user.name}}
-            </p>
+            <div>
+                <h2>
+                    <a href="/groups/{{group.id}}">{{group.group_name}}</a>
+                </h2>
+                <p>
+                    Study Topic: {{group.topic.topic_name}}!
+                </p>
+                <p>
+                    Skill Level: {{group.skill_level}}
+                </p>
+                <p>
+                    Time to Meet: {{group.meet_time}}
+                </p>
+                <p>
+                    Created by: {{group.user.name}}
+                </p>
+            </div>
+            <div>
+                <button data-id="{{group.id}}">DELETE</button>
+            </div>
         </div>
+        {{/each}}
     </div>
+    {{/if}}
+
     <script src="./js/groups.js"></script>
 </section>
