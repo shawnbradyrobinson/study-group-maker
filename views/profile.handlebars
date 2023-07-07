@@ -17,7 +17,7 @@
         <div>
             <label for="topic_id">Topic: </label>
             <select name="topic_id" id="topic_id">
-                {{#each topics as |topic| }}<option value="{{id}}">{{topic_name}}</option>{{/each}}
+                {{#each topics}}<option value="{{id}}">{{topic_name}}</option>{{/each}}
             </select>
         </div>
         <div>
@@ -44,21 +44,32 @@
         {{#each enrollments.user_id as |group|}}
         <div>
             <div>
-                <h2>
-                    <a href="/groups/{{group.id}}">{{group.group_name}}</a>
-                </h2>
-                <p>
-                    Study Topic: {{group.topic.topic_name}}!
-                </p>
-                <p>
-                    Skill Level: {{group.skill_level}}
-                </p>
-                <p>
-                    Time to Meet: {{group.meet_time}}
-                </p>
-                <p>
-                    Created by: {{group.user.name}}
-                </p>
+                <div>
+                    <h2>
+                        <a href="/groups/{{group.id}}">{{group.group_name}}</a>
+                    </h2>
+                    <p>
+                        Study Topic: {{group.topic.topic_name}}!
+                    </p>
+                    <p>
+                        Skill Level: {{group.skill_level}}
+                    </p>
+                    <p>
+                        Time to Meet: {{group.meet_time}}
+                    </p>
+                    <p>
+                        Created by: {{group.user.name}}
+                    </p>
+                </div>
+            </div>
+            <div>
+                <label for="user_names">User Names: </label>
+                <select name="user_names" id="user_names">
+                    {{!-- {{#unless enrollments.users.id}} --}}
+                    {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>
+                    {{/each}}
+                    {{!-- {{/unless}} --}}
+                </select>
             </div>
             <div>
                 <button data-id="{{group.id}}">DELETE</button>
