@@ -19,6 +19,14 @@
     <div id= "group_{{group.id}}">
         <button id="enroll_user">Join Group</button>
     </div>
+    <div>
+        <label for="user_names">User Names: </label>
+        <select name="user_names" id="user_names">
+            {{!-- {{#unless enrollments.users.id}} --}}
+            {{#each users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>{{/each}}
+            {{!-- {{/unless}} --}}
+        </select>
+    </div>
 </div>
 
 <script src="/js/enrollments.js"></script>
