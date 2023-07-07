@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #2D3142;
+    --text-color: #BFC0C0;
+    /* --main-color: #26c1d2; */
+    --main-color: #F39237;
+    --dark-color: #2D3142;
+    --highlight-color: rgba(255, 255, 255, 0.663);
+
+}
+
+.about {
+  min-height: auto;
+  padding-bottom: 7rem;
+  padding-top: 20vh;
+  margin-top: 10vh;
+}
+
+.heading {
+  font-size: 4.5rem;
+  text-align: center;
+}
+
+.about h2 {
+    /* margin-bottom: 5rem; */
+}
+
+.about .about-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* New property to ensure all items stretch to the same height */
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 2rem;
+}
+
+.about-card-container .about-card {
+  display: flex; /* New property to make the card content flex items */
+  flex-direction: column; /* New property to orient the card content vertically */
+  flex-grow: 1; /* New property to make the card grow to the maximum space available */
+  flex-basis: 0; /* New property to set the initial main size of the flex item to 0 */
+  flex: 1 1 25rem;
+  background: var(--bg-color);
+  padding: 3rem 2rem 4rem;
+  border-radius: 2rem;
+  box-shadow: 0 .1rem .5rem var(--highlight-color);
+  text-align: center;
+  border-top: .6rem solid var(--main-color);
+  border-bottom: .6rem solid var(--main-color);
+  transition: 0.5s ease;
+}
+
+.about-card-container .about-card:hover {
+  box-shadow: 0 0.1rem 1.5rem var(--highlight-color);
+  transform: scale(1.02);
+}
+
+.about-card i {
+  font-size: 7rem;
+  color: var(--main-color);
+}
+
+.about-card h3 {
+  font-size: 2.6rem;
+  transition: 0.5s ease;
+}
+
+.about-card:hover h3 {
+  color: var(--main-color);
+}
+
+.about-card p {
+  font-size: 1.6rem;
+  margin: 1rem 0 3rem;
+}
