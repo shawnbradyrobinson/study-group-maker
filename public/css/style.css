@@ -1,19 +1,44 @@
 :root {
-    background-color: rgb(219, 213, 213);
+    --bg-color: #2D3142;
+    --text-color: #BFC0C0;
+    /* --main-color: #26c1d2; */
+    --main-color: #1D72AA;
+    --dark-color: #2D3142;
+    --highlight-color: rgba(255, 255, 255, 0.663);
 
 }
-.body {
-    background-image: url("/assets/study-group-homepage.avif");
+
+body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 
 }
+
+.navbar-item {
+    color: var(--text-color);
+}
+
 .title {
-    background-color: rgb(242, 240, 240, .50);
-    width: 80vw;
+    /* background-color: rgb(242, 240, 240, .50); */
+    text-align: center;
+    color: var(--txt-color);
        
+}
+
+#home {
+    background-image: url("/assets/study-group-homepage.avif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+#about {
+    min-height: 100vh;
+
 }
 .form {
     margin-right: 60vw;
