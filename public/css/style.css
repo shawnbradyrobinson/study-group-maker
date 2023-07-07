@@ -1,0 +1,17 @@
+:root {
+    background-color: rgb(219, 213, 213);
+
+}
+body {
+    background-image: url("/assets/study-group-homepage.avif");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+}
+.title {
+    background-color: rgb(242, 240, 240, .50);
+    width: 80vw;
+       
+}
