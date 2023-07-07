@@ -58,24 +58,34 @@ router.get('/groups', loginAuthentication, async (req, res) => {
 
 router.get('/profile', loginAuthentication, async (req, res) => {
   try{
-    const recordsTopics = await Topics.findAll({});
+  // const recordsTopics = await Topics.findAll({});
 
   const recordsEnrollments = await Users.findByPk(req.session.user_id, {
     attributes: { exclude: ['password'] },
-    include: [{ model: Groups, through: Enrollments, as: 'user_id' }]
-
-
+    include: [
+      { 
+        model: Groups, 
+        through: Enrollments, 
+        as: 'user_id',
+        include: [
+          {
+            model: Topics,
+            attributes: ['topic_name'],
+          },
+        ]
+      },
+    ]
   });
 
-  const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
+  // const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
   const enrollments = recordsEnrollments.get({ plain: true });
   console.log(enrollments);
   res.render('profile', { 
-    topics,
+    // topics,
     enrollments,
     loggedIn: true
   }); 
-
+  console.log(enrollments);
   }catch (err){
     console.log(err);
     res.status(500).json(err);
