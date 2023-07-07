@@ -3,7 +3,6 @@ const { Enrollments } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        console.log(req.body);
         const newEnrollmentData = await Enrollments.findOrCreate({
           where: {
             user_id: req.session.user_id,

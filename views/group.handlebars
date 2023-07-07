@@ -13,11 +13,11 @@
             Time to Meet: {{group.meet_time}}
         </p>
         <p>
-            Created by: {{group.user.name}}
+            Created by: {{group.created_by}}
         </p>
     </div>
-    <div>
-        <button id="enroll_user" type="submit">Join Group</button>
+    <div id= "group_{{group.id}}">
+        <button id="enroll_user">Join Group</button>
     </div>
     <div>
         <label for="user_names">User Names: </label>
