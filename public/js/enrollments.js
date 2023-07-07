@@ -3,7 +3,7 @@ const enrollmentsFormHandler = async (event) => {
   
     const group_id = document.querySelector('#group_id').value.trim();
     if (group_id) {
-      const response = await fetch('/api/groups', {
+      const response = await fetch(`/api/enrollments/${id}`, {
         method: 'POST',
         body: JSON.stringify({ group_id }),
         headers: { 'Content-Type': 'application/json' },

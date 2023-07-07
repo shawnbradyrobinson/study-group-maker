@@ -61,6 +61,12 @@ router.get('/profile', loginAuthentication, async (req, res) => {
   try{
   const recordsTopics = await Topics.findAll({});
 
+  const userData = await Users.findAll({
+    where: {
+      id: {[Op.ne]: req.session.user_id}
+    }
+  });
+
   const recordsEnrollments = await Users.findByPk(req.session.user_id, {
     attributes: { exclude: ['password'] },
     include: [
@@ -78,12 +84,14 @@ router.get('/profile', loginAuthentication, async (req, res) => {
     ]
   });
 
+  const users = userData.map((user) => user.get({plain: true}));
   const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
   const enrollments = recordsEnrollments.get({ plain: true });
-  console.log(enrollments);
+  console.log(users);
   res.render('profile', { 
     topics,
     enrollments,
+    users,
     loggedIn: true
   }); 
   console.log(enrollments);
@@ -104,12 +112,6 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
         }
       ]
     });
-<<<<<<< HEAD
-
-    const group = recordData.get({ plain: true });
-
-    res.render('group', { group, loggedIn: true}); 
-=======
     const userData = await Users.findAll({
       where: {
         id: {[Op.ne]: req.session.user_id}
@@ -121,9 +123,8 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
 
     const group = recordData.get({ plain: true });
   
-    console.log(recordData);
-    res.render('group', { group, loggedIn: true, users}); 
->>>>>>> d083f96abdfa533905a47e8c61f4fa979766b41c
+    console.log(users);
+    res.render('group', { group, users, loggedIn: true, users}); 
   } catch (err){
     console.log(err);
     res.status(500).json(err);
