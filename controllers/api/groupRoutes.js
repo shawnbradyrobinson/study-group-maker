@@ -27,6 +27,7 @@ res.status(200).send("message sent from api/groups");
         skill_level: req.body.skill_level,
         zoom_link: req.body.zoom_link,
         meet_time: req.body.meet_time,
+        created_by: req.session.user_id
       });
       const group = newGroupData.get({ plain: true });
       res.status(200).json(group);

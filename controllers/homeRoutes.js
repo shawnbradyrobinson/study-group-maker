@@ -59,7 +59,7 @@ router.get('/groups', loginAuthentication, async (req, res) => {
 
 router.get('/profile', loginAuthentication, async (req, res) => {
   try{
-  // const recordsTopics = await Topics.findAll({});
+   const recordsTopics = await Topics.findAll({});
 
   const recordsEnrollments = await Users.findByPk(req.session.user_id, {
     attributes: { exclude: ['password'] },
@@ -78,11 +78,11 @@ router.get('/profile', loginAuthentication, async (req, res) => {
     ]
   });
 
-  // const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
+   const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
   const enrollments = recordsEnrollments.get({ plain: true });
   console.log(enrollments);
   res.render('profile', { 
-    // topics,
+     topics,
     enrollments,
     loggedIn: true
   }); 

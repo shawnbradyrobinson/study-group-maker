@@ -1,15 +1,14 @@
-const enrollmentsFormHandler = async (event) => {
+const enrollmentsHandler = async (event) => {
     event.preventDefault();
-  
-    const group_id = document.querySelector('#group_id').value.trim();
-    if (group_id) {
-      const response = await fetch('/api/groups', {
+    const study_group_id = document.querySelector('#enroll_user').parentNode.id.substring(6);
+    if (study_group_id) {
+      const response = await fetch(`/api/enrollments/`, {
         method: 'POST',
-        body: JSON.stringify({ group_id }),
+        body: JSON.stringify({ study_group_id }),
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        document.location.replace('/groups/group_id');
+        document.location.replace(`/groups/${study_group_id}`);
       } else {
         alert(response.statusText);
       }
@@ -37,7 +36,7 @@ const enrollmentsFormHandler = async (event) => {
 //     }
 //   }
 // };
-  
+
   document
     .querySelector('#enroll_user')
-    .addEventListener('submit', enrollmentsFormHandler);
+    .addEventListener('click', enrollmentsHandler);

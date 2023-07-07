@@ -30,6 +30,10 @@ Groups.belongsTo(Topics, {
   foreignKey: 'topic_id'
 })
 
+Groups.hasOne(Users, {
+  foreignKey: 'created_by'
+})
+
 
 
 module.exports = { Users, Topics, Enrollments, Groups };
