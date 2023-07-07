@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Op } = require("sequelize");
 const { Groups, Topics, Users, Enrollments } = require("../models");
 const loginAuthentication = require('../utils/authentication');
 
@@ -103,10 +104,26 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
         }
       ]
     });
+<<<<<<< HEAD
 
     const group = recordData.get({ plain: true });
 
     res.render('group', { group, loggedIn: true}); 
+=======
+    const userData = await Users.findAll({
+      where: {
+        id: {[Op.ne]: req.session.user_id}
+      }
+    });
+
+    const users = userData.map((user) => user.get({plain: true}));
+
+
+    const group = recordData.get({ plain: true });
+  
+    console.log(recordData);
+    res.render('group', { group, loggedIn: true, users}); 
+>>>>>>> d083f96abdfa533905a47e8c61f4fa979766b41c
   } catch (err){
     console.log(err);
     res.status(500).json(err);

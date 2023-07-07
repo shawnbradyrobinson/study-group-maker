@@ -1,6 +1,5 @@
   const groupFormHandler = async (event) => {
     event.preventDefault();
-  
     const group_name = document.querySelector('#group_name').value.trim();
     const group_description = document.querySelector('#group_description').value.trim();
     const topic_id = Number(document.querySelector('#topic_id').value.trim());
