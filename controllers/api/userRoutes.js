@@ -1,10 +1,14 @@
 const router = require('express').Router();
-const fs = require('fs');
 const { Users } = require("../../models");
 
 router.get('/', (req, res) => {
-    console.log("Get from the api/users");
-    res.send("hi");
+    try{
+      console.log("Get from the api/users");
+    res.status(200).send("Get from the api/users");
+    } catch {
+      console.log(err);
+      res.status(500).json(err);
+    }
 })
 .post('/', async (req, res) => {
     //Create a new user
@@ -21,6 +25,7 @@ router.get('/', (req, res) => {
       });
   
       req.session.save(() => {
+        req.session.user_id = dbUserData.id
         req.session.loggedIn = true;
   
         res.status(200).json(dbUserData);
@@ -31,12 +36,58 @@ router.get('/', (req, res) => {
     }
   });
 
-  router.get('/data', (req, res) => {
+router.post('/login', async (req, res) => {
 
-    //findByPK or findAll 
-    res.send(sequelize.models.User);
-  })
+  try {
+    
+    const userData = await Users.findOne({
+      where: {
+        email: req.body.email
+      }
+    });
 
+    if(!userData) {
+      res.status(400).json({ mssg: 'Incorrect email or password.' })
+
+      return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if(!validPassword) {
+
+      res.status(400).json({ mssg: 'Incorrect email or password.' })
+
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.loggedIn = true;
+
+      res.json({ user: userData, mssg: 'You are now logged in.' })
+    });
+
+  } catch (err) {
+    
+    res.status(400).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+
+  if(req.session.loggedIn) {
+
+    req.session.destroy(() => {
+
+      res.status(204).end();
+    });
+
+  } else {
+
+    res.status(404).end();
+  }
+});
   
 
 module.exports = router; 

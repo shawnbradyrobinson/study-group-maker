@@ -1,75 +1,153 @@
 const router = require('express').Router();
-const { Groups, Topics, Users } = require("../models/");
+const { Op } = require("sequelize");
+const { Groups, Topics, Users, Enrollments } = require("../models");
+const loginAuthentication = require('../utils/authentication');
 
 router.get('/', async (req, res) => {
-  
-  const records = await Groups.findAll({});
+  try {
+    const records = await Groups.findAll({});
 
   const groups = records.map((record) => record.get({plain: true}));
 
   console.log(records);
-  res.render('homepage', {groups}); 
+  res.status(200).render('homepage', {
+    groups,
+    loggedIn: req.session.loggedIn
+  }); 
+  } catch (err){
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 router.get('/login', (req, res) => {
-  console.log("hitting the login page");
-  res.render('login');
+  try{
 
+    if(req.session.loggedIn) {
+      res.redirect('/profile');
+
+      return;
+    }
+
+    res.render('login');
+  } catch(err) {
+    console.log(err);
+    res.status(500).json(err); 
+  }
 });
 
-router.get('/groups', async (req, res) => {
+router.get('/groups', loginAuthentication, async (req, res) => {
+  try {
+    const records = await Groups.findAll({
+      include: [
+        {
+          model: Topics,
+          attributes: ['topic_name'],
+        }
+      ]
+    });
+
+    const groups = records.map((record) => record.get({plain: true}));
   
-  const records = await Groups.findAll({
+    console.log(records);
+    res.render('groups_list', {groups, loggedIn: true}); 
+  }catch (err){
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/profile', loginAuthentication, async (req, res) => {
+  try{
+  const recordsTopics = await Topics.findAll({});
+
+  const userData = await Users.findAll({
+    where: {
+      id: {[Op.ne]: req.session.user_id}
+    }
+  });
+
+  const recordsEnrollments = await Users.findByPk(req.session.user_id, {
+    attributes: { exclude: ['password'] },
     include: [
-      {
-        model: Topics,
-        attributes: ['topic_name'],
-      }
+      { 
+        model: Groups, 
+        through: Enrollments, 
+        as: 'user_id',
+        include: [
+          {
+            model: Topics,
+            attributes: ['topic_name'],
+          },
+        ]
+      },
     ]
   });
 
-  const groups = records.map((record) => record.get({plain: true}));
-
-  console.log(records);
-  res.render('groups_list', {groups}); 
-});
-
-
-router.get('/profile', async (req, res) => {
+  const users = userData.map((user) => user.get({plain: true}));
+  const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
+  const enrollments = recordsEnrollments.get({ plain: true });
+  console.log(users);
+  res.render('profile', { 
+    topics,
+    enrollments,
+    users,
+    loggedIn: true
+  }); 
+  console.log(enrollments);
+  }catch (err){
+    console.log(err);
+    res.status(500).json(err);
+  }
   
-  const records = await Topics.findAll({
-
-      // {
-      //   model: Users,
-      //   where: {
-      //     id: 1,
-      //     attributes: ['first_name']
-      //   },
-      // },
-
-  });
-
-  const topics = records.map((record) => record.get({plain: true}));
-
-  console.log(records);
-  res.render('profile', { topics }); 
 });
 
-router.get('/groups/:id', async (req, res) => {
-
-  const recordData = await Groups.findByPk(req.params.id, {
-    include: [
-      {
-        model: Topics,
-        attributes: ['topic_name'],
+router.get('/groups/:id', loginAuthentication, async (req, res) => {
+  try{
+    const recordData = await Groups.findByPk(req.params.id, {
+      include: [
+        {
+          model: Topics,
+          attributes: ['topic_name'],
+        }
+      ]
+    });
+    const userData = await Users.findAll({
+      where: {
+        id: {[Op.ne]: req.session.user_id}
       }
-    ]
-  });
+    });
 
-  const group = recordData.get({ plain: true });
+    const users = userData.map((user) => user.get({plain: true}));
 
-  console.log(recordData);
-  res.render('group', { group }); 
+
+    const group = recordData.get({ plain: true });
+  
+    console.log(users);
+    res.render('group', { group, users, loggedIn: true, users}); 
+  } catch (err){
+    console.log(err);
+    res.status(500).json(err);
+  }
 })
+
+router.get('/enrollments/:id', async (req, res) => {
+  try{
+    const records = await Groups.findByPk(req.params.id,{
+      include: [{ model: Users, through: Enrollments, as: 'group_id' }]
+  
+  
+    });
+    //const enrollments = records.map((record) => record.get({plain: true}));
+  
+    res.send(records);
+    
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 
 module.exports = router;

@@ -8,7 +8,8 @@ Users.belongsToMany(Groups, {
     model: Enrollments,
     unique: false
   },
-  as: 'user_id'
+  as: 'user_id',
+  // onDelete: 'CASCADE'
 });
 
 Groups.belongsToMany(Users, {
@@ -16,7 +17,8 @@ Groups.belongsToMany(Users, {
     model: Enrollments,
     unique: false
   },
-  as: 'group_id'
+  as: 'group_id',
+  // onDelete: 'CASCADE'
 });
 
 Topics.hasMany(Groups, {
@@ -27,5 +29,7 @@ Topics.hasMany(Groups, {
 Groups.belongsTo(Topics, {
   foreignKey: 'topic_id'
 })
+
+
 
 module.exports = { Users, Topics, Enrollments, Groups };
