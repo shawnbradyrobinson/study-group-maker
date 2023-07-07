@@ -1,8 +1,8 @@
 :root {
     --bg-color: #2D3142;
-    --txt-color: #BFC0C0;
+    --text-color: #BFC0C0;
     /* --main-color: #26c1d2; */
-    --main-color: #146aff;
+    --main-color: #1D72AA;
     --dark-color: #2D3142;
     --highlight-color: rgba(255, 255, 255, 0.663);
 
@@ -14,8 +14,12 @@ body {
     background-repeat: no-repeat;
     position: relative;
     background-color: var(--bg-color);
-    color: var(--txt-color);
+    color: var(--text-color);
 
+}
+
+.navbar-item {
+    color: var(--text-color);
 }
 
 .title {
