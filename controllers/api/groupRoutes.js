@@ -53,7 +53,7 @@ res.status(200).send("message sent from api/groups");
       });
 
       if (!groupData) {
-        res.status(404).json({ mssg: 'No group found with this id.' });
+        res.status(404).json({ msg: 'No group found with this id.' });
 
         return;
       }
