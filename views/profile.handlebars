@@ -50,7 +50,7 @@
     
 
     {{#if enrollments.user_id.length}}
-    <div>
+    <div id = "user-group-list">
         {{#each enrollments.user_id as |group|}}
         <div>
             <div>
@@ -73,9 +73,9 @@
                 </div>
             </div>
             <div>
-                <form id="add-user" action="">
+                <form id= "add-user-{{group.id}}" class="add-user" action="">
                     <label for="user_names">User Names: </label>
-                    <select name="user_names" id="user_names">
+                    <select name="user_names" class="user_names">
                         {{!-- {{#unless enrollments.users.id}} --}}
                         {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>
                         {{/each}}
@@ -95,4 +95,6 @@
     {{/if}}
 
     <script src="./js/groups.js"></script>
+    <script src="./js/enrollUser.js"></script>
+
 </section>
