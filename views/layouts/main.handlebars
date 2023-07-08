@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,46 +12,51 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="/css/about.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
     <section class="hero has-background-info-dark is-medium">
         <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand"> 
-                        <a class="navbar-item is-size-4" href="/">Study Group Maker</a>
-                        <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item is-size-4" href="/">Study Group Maker</a>
+                    <span role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarMenuHeroA">
                         <span></span>
                         <span></span>
                         <span></span>
-                        </span>
-                    </div>
-                
+                    </span>
+                </div>
+
                 <div id="navbarMenuHeroA" class="navbar-menu">
                     <div class="navbar-end">
-                <a class="navbar-item" href="/#home">Home</a>
-                <a class="navbar-item" href="/#about">About</a>
-                <a class="navbar-item" href="/#creators">Creators</a>
-                <a class="navbar-item" href="/#contact">Contact Us</a>
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="navbar-item" href="/#home">Home</a>
+                                <a class="navbar-item" href="/#about">About</a>
+                                <a class="navbar-item" href="/#creators">Creators</a>
+                                <a class="navbar-item" href="/#contact">Contact Us</a>
 
-                {{#if loggedIn}}
-                <a class="navbar-item" href="/groups">Groups</a>
-                <a class="navbar-item" href="/profile">Profile</a> 
+                                {{#if loggedIn}}
+                                <a class="button" href="/groups">Groups</a>
+                                <a class="button" href="/profile">Profile</a>
 
-                <button id="logout">logout</button>
-                {{else}}
-                <a class="navbar-item" href="/login">login</a>
-                {{/if}}
-                 </div>
+                                <button id="logout">Logout</button>
+                                {{else}}
+                                <a class="button" href="/login">Login</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </nav>
         </div>
-     </section>
-        <main>
-            {{{body}}}
-        </main>
+    </section>
+    <main>
+        {{{body}}}
+    </main>
     <footer>
 
     </footer>
@@ -58,5 +64,8 @@
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
     {{/if}}
+
+    <script src="/js/navbar.js"></script>
 </body>
+
 </html>

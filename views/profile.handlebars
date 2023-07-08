@@ -3,51 +3,53 @@
 </div>
 
 
-<section>
+<section id="profile">
     <h3 class="is-size-3 ml-3 pb-2">Make a Study Group!</h3>
 
-<div class="topOfProfile">
-<div class="formWrapper">
-    <form  class="form" id="create_group" action="">
-        <div>
-            <label class="label" for="group_name">Group Name: </label>
-            <input class="input" type="text" name="group_name" id="group_name">
+    <div class="topOfProfile">
+        <div class="formWrapper">
+            <form class="form" id="create_group" action="">
+                <div>
+                    <label class="label" for="group_name">Group Name: </label>
+                    <input class="input" type="text" name="group_name" id="group_name">
+                </div>
+                <div>
+                    <label class="label" for="group_description">Group Description: </label>
+                    <input class="input" type="text" name="group_description" id="group_description">
+                </div>
+                <div>
+                    <label class="label" for="topic_id">Topic: </label>
+                    <select class="select" name="topic_id" id="topic_id">
+                        {{#each topics}}<option value="{{id}}">{{topic_name}}</option>{{/each}}
+                    </select>
+                </div>
+                <div>
+                    <label class="label" for="skill_level">Skill Level: </label>
+                    <select class="select" name="skill_level" id="skill_level">
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="label" for="zoom_link">Zoom Link: </label>
+                    <input class="input" type="text" name="zoom_link" id="zoom_link">
+                </div>
+                <div>
+                    <label class="label" for="meet_time">Meet Time: </label>
+                    <input class="input" type="text" name="meet_time" id="meet_time">
+                </div>
+                <button class="button has-background-info-dark has-text-white mt-3" type="submit">Submit</button>
+            </form>
         </div>
-        <div>
-            <label class="label" for="group_description">Group Description: </label>
-            <input class="input" type="text" name="group_description" id="group_description">
+
+        <div class="profileImg">
+            <img class="image" src="./assets/group-of-students.jpg"
+                alt="A group of students at a table studying together.">
         </div>
-        <div>
-            <label class="label" for="topic_id">Topic: </label>
-            <select class="select" name="topic_id" id="topic_id">
-                {{#each topics}}<option value="{{id}}">{{topic_name}}</option>{{/each}}
-            </select>
-        </div>
-        <div>
-            <label class="label" for="skill_level">Skill Level: </label>
-            <select class="select" name="skill_level" id="skill_level">
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-            </select>
-        </div>
-        <div>
-            <label class="label" for="zoom_link">Zoom Link: </label>
-            <input class="input" type="text" name="zoom_link" id="zoom_link">
-        </div>
-        <div>
-            <label class="label" for="meet_time">Meet Time: </label>
-            <input class="input" type="text" name="meet_time" id="meet_time">
-        </div>
-        <button class="button has-background-link-dark has-text-white mt-3" type="submit">Submit</button>
-    </form>
     </div>
 
-    <div class="profileImg">
-        <img class="image" src="./assets/group-of-students.jpg" alt="A group of students at a table studying together.">
-    </div>
-</div>
-    
+
 
     {{#if enrollments.user_id.length}}
     <div id = "user-group-list">
@@ -73,9 +75,9 @@
                 </div>
             </div>
             <div>
-                <form id= "add-user-{{group.id}}" class="add-user" action="">
-                    <label for="user_names">User Names: </label>
-                    <select name="user_names" class="user_names">
+                <form id="add-user" action="">
+                    <label for="user_names">Add User: </label>
+                    <select name="user_names" id="user_names">
                         {{!-- {{#unless enrollments.users.id}} --}}
                         {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>
                         {{/each}}
