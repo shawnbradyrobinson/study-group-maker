@@ -1,43 +1,53 @@
 <div>
-    <h2>Ready to study, {{enrollments.first_name}}?!</h2>
+    <h2 class="is-size-2 ml-3">Ready to study, {{enrollments.first_name}}?!</h2>
 </div>
 
-<section>
-    <h3>Make a Study Group!</h3>
 
-    <form id="create_group" action="">
+<section>
+    <h3 class="is-size-3 ml-3 pb-2">Make a Study Group!</h3>
+
+<div class="topOfProfile">
+<div class="formWrapper">
+    <form  class="form" id="create_group" action="">
         <div>
-            <label for="group_name">Group Name: </label>
-            <input type="text" name="group_name" id="group_name">
+            <label class="label" for="group_name">Group Name: </label>
+            <input class="input" type="text" name="group_name" id="group_name">
         </div>
         <div>
-            <label for="group_description">Group Description: </label>
-            <input type="text" name="group_description" id="group_description">
+            <label class="label" for="group_description">Group Description: </label>
+            <input class="input" type="text" name="group_description" id="group_description">
         </div>
         <div>
-            <label for="topic_id">Topic: </label>
-            <select name="topic_id" id="topic_id">
+            <label class="label" for="topic_id">Topic: </label>
+            <select class="select" name="topic_id" id="topic_id">
                 {{#each topics}}<option value="{{id}}">{{topic_name}}</option>{{/each}}
             </select>
         </div>
         <div>
-            <label for="skill_level">Skill Level: </label>
-            <select name="skill_level" id="skill_level">
+            <label class="label" for="skill_level">Skill Level: </label>
+            <select class="select" name="skill_level" id="skill_level">
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
             </select>
         </div>
         <div>
-            <label for="zoom_link">Zoom Link: </label>
-            <input type="text" name="zoom_link" id="zoom_link">
+            <label class="label" for="zoom_link">Zoom Link: </label>
+            <input class="input" type="text" name="zoom_link" id="zoom_link">
         </div>
         <div>
-            <label for="meet_time">Meet Time: </label>
-            <input type="text" name="meet_time" id="meet_time">
+            <label class="label" for="meet_time">Meet Time: </label>
+            <input class="input" type="text" name="meet_time" id="meet_time">
         </div>
-        <button type="submit">Submit</button>
+        <button class="button has-background-link-dark has-text-white mt-3" type="submit">Submit</button>
     </form>
+    </div>
+
+    <div class="profileImg">
+        <img class="image" src="./assets/group-of-students.jpg" alt="A group of students at a table studying together.">
+    </div>
+</div>
+    
 
     {{#if enrollments.user_id.length}}
     <div>
