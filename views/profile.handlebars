@@ -73,13 +73,18 @@
                 </div>
             </div>
             <div>
-                <label for="user_names">User Names: </label>
-                <select name="user_names" id="user_names">
-                    {{!-- {{#unless enrollments.users.id}} --}}
-                    {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>
-                    {{/each}}
-                    {{!-- {{/unless}} --}}
-                </select>
+                <form id="add-user" action="">
+                    <label for="user_names">User Names: </label>
+                    <select name="user_names" id="user_names">
+                        {{!-- {{#unless enrollments.users.id}} --}}
+                        {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>
+                        {{/each}}
+                        {{!-- {{/unless}} --}}
+                    </select>
+
+                    <button type="submit">Add User</button>
+                </form>
+
             </div>
             <div>
                 <button data-id="{{group.id}}">DELETE</button>
