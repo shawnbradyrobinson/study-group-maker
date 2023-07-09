@@ -42,13 +42,12 @@ res.status(200).send("message sent from api/groups");
       res.status(500).json(err);
     }
   })
-  .delete('/:id', loginAuthentication, async (reg, res) => {
+  .delete('/:id', loginAuthentication, async (req, res) => {
     try {
 
       const groupData = await Groups.destroy({
         where: {
           id: req.params.id,
-          user_id: req.session.user_id,
         },
       });
 
