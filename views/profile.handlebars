@@ -109,7 +109,7 @@
                         Time to Meet: {{group.meet_time}}
                     </p>
                     <p>
-                        Created by: {{group.user.name}}
+                        Created by: {{group.user.first_name}} {{group.user.last_name}}
                     </p>
                 </div>
             </div>
@@ -133,9 +133,8 @@
         </div>
         {{/each}}
     </div>
-    {{/if}}
-
     <script src="./js/groups.js"></script>
     <script src="./js/enrollUser.js"></script>
+    {{/if}}
 
 </section>
