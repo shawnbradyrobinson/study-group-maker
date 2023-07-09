@@ -70,11 +70,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ## **Questions** 
-If you have further questions, we can be contacted at any of the following links: 
+If you have further questions, we can be contacted at any of the following links:
+--- 
+**Nam (Tommy) Nguyen** 
 - (https://github.com/Namhn1231)
+- (https://www.linkedin.com/in/nam-nguyen-4922a120b/)
+- namhn1231@gmail.com
+
+**Kendall Smith** 
 - (https://github.com/kendall529)
+- kendall.smith529@gmail.com
+
+**Jennifer Dutton** 
 - (https://github.com/jdutton8)
+- (https://www.linkedin.com/in/jenny-dutton-963924282/)
+- jennydutton7@gmail.com 
 
-
+**Shawn Robinson** 
+- (https://github.com/shawnbradyrobinson)
 - (https://www.linkedin.com/in/shawn-robinson-9aaa12170/)
 - shawnbradyrobinson1@gmail.com 
