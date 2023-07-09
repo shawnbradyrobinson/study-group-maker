@@ -95,14 +95,31 @@ router.get('/profile', loginAuthentication, async (req, res) => {
   const users = userData.map((user) => user.get({plain: true}));
   const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
   const enrollments = recordsEnrollments.get({ plain: true });
-  console.log();
+  console.log(enrollments.user_id[0].created_by);
+  
+  enrollments.user_id.forEach(element => {
+  console.log(element.created_by);
+  console.log(req.session.user_id);
+
+    if(element.created_by === req.session.user_id) {
+
+      element.isOwner = true;
+
+      console.log('is not owner');
+
+    }
+  });
+
+  console.log(enrollments.user_id);
+
+
   res.render('profile', { 
     topics,
     enrollments,
     users,
     loggedIn: true
   }); 
-  console.log(enrollments);
+  console.log();
   }catch (err){
     console.log(err);
     res.status(500).json(err);

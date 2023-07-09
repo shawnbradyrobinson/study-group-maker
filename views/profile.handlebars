@@ -128,9 +128,11 @@
                 </form>
 
             </div>
+            {{#if group.isOwner}}
             <div>
-                <button id="deleteButton" class="button buttonDlt" data-id="{{group.id}}">DELETE</button>
+                <button id="deleteButton" class="button buttonDlt" data-id="{{group.id}}"><i class='bx bx-trash' ></i></button>
             </div>
+            {{/if}}
         </div>
         {{/each}}
     </div>
