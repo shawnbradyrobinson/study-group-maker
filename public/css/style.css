@@ -18,6 +18,10 @@ body {
 
 }
 
+#logo:hover {
+    color: var(--bg-color);
+}
+
 .navbar-item {
     color: var(--text-color);
 }
