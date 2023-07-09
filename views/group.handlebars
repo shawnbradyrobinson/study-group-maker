@@ -1,0 +1,32 @@
+<div>
+    <div>
+        <h2>
+            <a href="/groups/{{group.id}}">{{group.group_name}}</a>
+        </h2>
+        <p>
+            Study Topic: {{group.topic.topic_name}}!
+        </p>
+        <p>
+            Skill Level: {{group.skill_level}}
+        </p>
+        <p>
+            Time to Meet: {{group.meet_time}}
+        </p>
+        <p>
+            Created by: {{group.created_by}}
+        </p>
+    </div>
+    <div id= "group_{{group.id}}">
+        <button id="enroll_user">Join Group</button>
+    </div>
+    <div>
+        <label for="user_names">User Names: </label>
+        <select name="user_names" id="user_names">
+            {{!-- {{#unless enrollments.users.id}} --}}
+            {{#each users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>{{/each}}
+            {{!-- {{/unless}} --}}
+        </select>
+    </div>
+</div>
+
+<script src="/js/enrollments.js"></script>

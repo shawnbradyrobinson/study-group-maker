@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection");
+const Enrollments = require("./Enrollments");
 
 class Groups extends Model {}
 
@@ -23,10 +24,14 @@ Groups.init(
             allowNull: true, 
         },
 
-        study_topic: {
+        topic_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            foreignKey: true,
+            references: {
+                model: 'topics',
+                key: 'id',
+                unique: false
+            }
         },
 
         skill_level: {
@@ -43,14 +48,29 @@ Groups.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+
+        created_by: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'users',
+                key: 'id',
+                unique: false
+            }
+        }
     },
 
     {
+        hooks: {
+            afterCreate: async (newEnrollmentData) => {
+                Enrollments.create({user_id: newEnrollmentData.created_by, study_group_id: newEnrollmentData.id})
+            }
+        },
         sequelize, 
         timestamps: false, 
         freezeTableName: true,
         underscored: true,
-        modelName: "Groups",
+        modelName: "study_groups",
     }
 
 );
