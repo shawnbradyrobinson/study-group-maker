@@ -10,7 +10,7 @@
 
 :root {
     --bg-color: #2D3142;
-    --text-color: #d7d7d7;
+    --text-color: #b5b5b5;
     /* --main-color: #26c1d2; */
     --main-color: #1D72AA;
     --dark-color: #2D3142;
@@ -25,13 +25,8 @@
   margin-top: 10vh;
 }
 
-.heading {
-  font-size: 4.5rem;
-  text-align: center;
-}
-
 .about h2 {
-    /* margin-bottom: 5rem; */
+    margin-bottom: 5rem;
 }
 
 .about .about-card-container {
