@@ -30,7 +30,7 @@ Groups.belongsTo(Topics, {
   foreignKey: 'topic_id'
 })
 
-Groups.hasOne(Users, {
+Groups.belongsTo(Users, {
   foreignKey: 'created_by'
 })
 

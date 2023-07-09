@@ -43,7 +43,11 @@ router.get('/groups', loginAuthentication, async (req, res) => {
         {
           model: Topics,
           attributes: ['topic_name'],
-        }
+        },
+        {
+          model: Users,
+          attributes: ['first_name', 'last_name'],
+        },
       ]
     });
 
@@ -79,6 +83,10 @@ router.get('/profile', loginAuthentication, async (req, res) => {
             model: Topics,
             attributes: ['topic_name'],
           },
+          {
+            model: Users,
+            attributes: ['first_name', 'last_name'],
+          },
         ]
       },
     ]
@@ -87,7 +95,7 @@ router.get('/profile', loginAuthentication, async (req, res) => {
   const users = userData.map((user) => user.get({plain: true}));
   const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
   const enrollments = recordsEnrollments.get({ plain: true });
-  console.log(users);
+  console.log();
   res.render('profile', { 
     topics,
     enrollments,

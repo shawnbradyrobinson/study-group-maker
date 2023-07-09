@@ -286,3 +286,7 @@ span {
     font-size: 2rem;
     color: var(--text-color);
   }
+
+.underline {
+    text-decoration: underline;
+}
