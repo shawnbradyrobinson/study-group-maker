@@ -95,7 +95,7 @@ router.get('/profile', loginAuthentication, async (req, res) => {
   const users = userData.map((user) => user.get({plain: true}));
   const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
   const enrollments = recordsEnrollments.get({ plain: true });
-  console.log(enrollments.user_id[0].created_by);
+  // console.log(enrollments.user_id[0].created_by);
   
   enrollments.user_id.forEach(element => {
   console.log(element.created_by);
@@ -110,7 +110,7 @@ router.get('/profile', loginAuthentication, async (req, res) => {
     }
   });
 
-  console.log(enrollments.user_id);
+  // console.log(enrollments.user_id);
 
 
   res.render('profile', { 
