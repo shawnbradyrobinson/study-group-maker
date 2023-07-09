@@ -5,7 +5,14 @@
     const topic_id = Number(document.querySelector('#topic_id').value.trim());
     const skill_level = document.querySelector('#skill_level').value.trim();
     const zoom_link = document.querySelector('#zoom_link').value.trim();
-    const meet_time = document.querySelector('#meet_time').value.trim();
+    const meet_half_hour = document.querySelector('#meet_half_hour').value.trim();
+    const meet_am_pm = document.querySelector('#meet_am_pm').value.trim();
+    const meet_timezone = document.querySelector('#meet_timezone').value.trim();
+    const meet_time = meet_half_hour+" "+meet_am_pm+" "+meet_timezone;
+
+
+
+
     if (group_name && group_description && topic_id && skill_level && zoom_link && meet_time) {
       const response = await fetch('/api/groups', {
         method: 'POST',
