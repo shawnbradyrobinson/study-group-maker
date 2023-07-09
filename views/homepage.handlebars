@@ -96,16 +96,16 @@
 <section class="contact" id="contact">
   <h2 class="heading">Contact <span>Us</span></h2>
 
-  <form action="location.reload">
+  <form id = "contact-form">
     <div class="input-box">
-      <input type="text" placeholder="Full Name">
-      <input type="email" placeholder="Email Address">
+      <input id="name" type="text" placeholder="Full Name">
+      <input id="email" type="email" placeholder="Email Address">
     </div>
     <div class="input-box">
-      <input type="number" placeholder="Mobile Number">
-      <input type="text" placeholder="Email Subject">
+      <input id="phone" type="number" placeholder="Mobile Number">
+      <input id="subject" type="text" placeholder="Email Subject">
     </div>
-    <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+    <textarea id="message" name="" cols="30" rows="10" placeholder="Your Message"></textarea>
     <input type="submit" value="Send Message" class="button">
   </form>
 </section>
@@ -119,3 +119,5 @@
     <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
   </div>
 </footer>
+
+<script src="./js/contact.js"></script>
