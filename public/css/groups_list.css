@@ -58,7 +58,7 @@
     font-size: 2.6rem;
     transition: 0.5s ease;
   }
-  .list-card:hover h2 {
+  .list-card a:hover {
     color: var(--main-color);
   }
   .list-card p {
