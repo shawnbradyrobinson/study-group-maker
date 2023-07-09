@@ -22,12 +22,12 @@
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <a class="navbar-item is-size-4" href="/">Study Group Maker</a>
-                    <span role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                        data-target="navbarMenuHeroA">
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarMenuHeroA" id="burger">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </span>
+                    </a>
                 </div>
 
                 <div id="navbarMenuHeroA" class="navbar-menu">
@@ -40,10 +40,10 @@
                                 <a class="navbar-item" href="/#contact">Contact Us</a>
 
                                 {{#if loggedIn}}
-                                <a class="button" href="/groups">Groups</a>
-                                <a class="button" href="/profile">Profile</a>
+                                <a class="navbar-item" href="/groups">Groups</a>
+                                <a class="navbar-item" href="/profile">Profile</a>
 
-                                <button id="logout">Logout</button>
+                                <a class="button" id="logout">Logout</a>
                                 {{else}}
                                 <a class="button" href="/login">Login</a>
                                 {{/if}}

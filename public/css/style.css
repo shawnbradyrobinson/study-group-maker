@@ -4,7 +4,7 @@
     /* --main-color: #26c1d2; */
     --main-color: #1D72AA;
     --dark-color: #2D3142;
-    --highlight-color: rgba(255, 255, 255, 0.663);
+    --highlight-color: rgba(0, 0, 0, 0.455);
 
 }
 
@@ -45,37 +45,15 @@ body {
 
 }
 
-.login-form {
+/* .login-form {
     margin-right: 60vw;
     margin-left: 5vw;
 }
 .signup-form{
     margin-right: 60vw;
     margin-left: 5vw;
-}
-.topOfProfile {
-    display: flex;
-    justify-content: space-around;
-    margin-right: 10vw;
-    
-}
-.formWrapper {
-    width: 45vw;
-}
-.profileImg {
-    border: 3px solid;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 5px 3px;
-    max-width: 300px;
-    max-height: 440px;
-   
-}
-.image {
-    height: auto;
-    width: 100%;
-    padding: 0px;
+} */
 
-}
+
 
 
