@@ -1,6 +1,7 @@
+<div class="group-list-container">
 {{#each groups as |group| }}
-<div>
-    <div>
+
+    <div class="list-card">
         <h2>
             <a href="/groups/{{group.id}}">{{group.group_name}}</a>
         </h2>
@@ -17,5 +18,6 @@
             Created by: {{group.user.first_name}} {{group.user.last_name}}
         </p>
     </div>
-</div>
+
 {{/each}}
+</div>
