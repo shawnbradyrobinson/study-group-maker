@@ -80,6 +80,15 @@ body {
     background-color: var(--main-color);
     padding: 1rem;
     border-radius: 10px;
+    transition: 1s;
+}
+#home .mission-statement-container button:hover {
+    transform: scale(1.06);
+    box-shadow: var(--highlight-color);
+}
+
+#home .mission-statement-container button:hover a {
+    color: var(--dark-color);
 }
 
 #home a {
