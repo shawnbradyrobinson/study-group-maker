@@ -104,15 +104,16 @@
 }
 #add-user .button {
   color: var(--main-color);
-  margin-top: 0.4rem;
+  margin-top: 1rem;
 }
+
+
 .buttonDlt {
-    margin: 1rem;
+    margin-top: 1rem;
     height: auto;
-    width: 100%;
-    height: 160%;
+    width: 3rem;
+    height: 1.5rem;
     padding: 0px;
-    transform: translateY(-40px);
 }
 
 @media (max-width: 1200px) {
