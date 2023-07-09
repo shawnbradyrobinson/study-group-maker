@@ -132,7 +132,7 @@ span {
   }
   
   .creators-container h2 {
-    padding-top: 6rem;
+    padding-top: 4rem;
     margin: 2rem;
   }
   
@@ -206,4 +206,83 @@ span {
     background: var(--main-color);
   }
 
+#contact {
+    min-height: 100vh;
+}
 
+.contact h2 {
+  margin-bottom: 3rem;
+}
+
+.contact form {
+  max-width: 70rem;
+  margin: 1rem auto;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact form .input-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  background: var(--bg-color);
+  border-radius: 0.8rem;
+  margin: 0.7rem 0;
+  box-shadow: 0 0.1rem 0.5rem var(--highlight-color);
+}
+
+.contact form .input-box input {
+  width: 49%;
+}
+
+.contact form textarea {
+  resize: none;
+}
+
+.contact form .button {
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--main-color);
+  }
+  
+  .footer-text p {
+    font-size: 1rem;
+    color: var(--dark-color);
+  }
+  
+  .to-home-icon a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem;
+    background: var(--dark-color);
+    border-radius: 0.4rem;
+    border: .1rem solid var(--main-color);
+    outline: 0.1rem solid transparent;
+    transition: 0.5s ease;
+  }
+  
+  .to-home-icon a:hover {
+    outline-color: var(--dark-color);
+  }
+  
+  .to-home-icon a i {
+    font-size: 2rem;
+    color: var(--text-color);
+  }
