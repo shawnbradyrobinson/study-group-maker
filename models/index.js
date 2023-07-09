@@ -34,6 +34,8 @@ Groups.hasOne(Users, {
   foreignKey: 'created_by'
 })
 
-
+Users.hasMany(Groups, {
+  foreignKey: 'created_by'
+})
 
 module.exports = { Users, Topics, Enrollments, Groups };
