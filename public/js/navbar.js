@@ -5,4 +5,5 @@ const navMenu = document.querySelector('#navbarMenuHeroA');
 
 navBurger.addEventListener('click', () => {
     navMenu.classList.toggle('is-active');
+    
 });

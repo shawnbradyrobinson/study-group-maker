@@ -115,16 +115,16 @@
                 </div>
             </div>
             <div>
-                <form class="form" id="add-user" action="">
-                    <label class="label" for="user_names">Add User: </label>
-                    <select class="select" name="user_names" id="user_names">
+                <form class="form" class="add-user" action="">
+                    <label class="user-label" for="user_names">Add User: </label>
+                    <select name="user_names" class="select user_names">
                         {{!-- {{#unless enrollments.users.id}} --}}
                         {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>
                         {{/each}}
                         {{!-- {{/unless}} --}}
                     </select>
 
-                    <button class="button has-background-info-dark has-text-white" type="submit">Add User</button>
+                    <button class="add-user button has-background-info-dark has-text-white" type="submit">Add User</button>
                 </form>
 
             </div>
