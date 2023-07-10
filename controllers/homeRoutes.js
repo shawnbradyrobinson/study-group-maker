@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 
   const groups = records.map((record) => record.get({plain: true}));
 
-  console.log(records);
+  // console.log(records);
   res.status(200).render('homepage', {
     groups,
     loggedIn: req.session.loggedIn
@@ -53,7 +53,7 @@ router.get('/groups', loginAuthentication, async (req, res) => {
 
     const groups = records.map((record) => record.get({plain: true}));
   
-    console.log(records);
+    // console.log(records);
     res.render('groups_list', {groups, loggedIn: true}); 
   }catch (err){
     console.log(err);
@@ -95,22 +95,22 @@ router.get('/profile', loginAuthentication, async (req, res) => {
   const users = userData.map((user) => user.get({plain: true}));
   const topics = recordsTopics.map((recordsTopics) => recordsTopics.get({plain: true}));
   const enrollments = recordsEnrollments.get({ plain: true });
-  // console.log(enrollments.user_id[0].created_by);
+  //console.log(enrollments.user_id[0].created_by);
   
   enrollments.user_id.forEach(element => {
-  console.log(element.created_by);
-  console.log(req.session.user_id);
+  //console.log(element.created_by);
+ // console.log(req.session.user_id);
 
     if(element.created_by === req.session.user_id) {
 
       element.isOwner = true;
 
-      console.log('is not owner');
+      //console.log('is not owner');
 
     }
   });
 
-  // console.log(enrollments.user_id);
+  //console.log(enrollments.user_id);
 
 
   res.render('profile', { 
@@ -119,7 +119,7 @@ router.get('/profile', loginAuthentication, async (req, res) => {
     users,
     loggedIn: true
   }); 
-  console.log();
+  //console.log();
   }catch (err){
     console.log(err);
     res.status(500).json(err);
@@ -137,19 +137,30 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
         }
       ]
     });
-    const userData = await Users.findAll({
-      where: {
-        id: {[Op.ne]: req.session.user_id}
-      }
-    });
 
-    const users = userData.map((user) => user.get({plain: true}));
+    const userData = await Groups.findByPk(req.params.id, {
+      include: [
+        { 
+          model: Users, 
+          through: Enrollments, 
+          as: 'group_id',
+          attributes: { exclude: ['password'] },
+        },
+      ]
+    });
+    // const userData = await Users.findAll({
+    //   where: {
+    //     id: {[Op.ne]: req.session.user_id}
+    //   }
+    // });
+
+    const users = userData.get({ plain: true });
 
 
     const group = recordData.get({ plain: true });
   
     console.log(users);
-    res.render('group', { group, users, loggedIn: true, users}); 
+    res.render('group', { group, users, loggedIn: true}); 
   } catch (err){
     console.log(err);
     res.status(500).json(err);

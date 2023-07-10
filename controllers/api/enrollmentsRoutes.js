@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 
 router.post('/:id', async (req, res) => {
   try {
-      console.log(req.body);
+      // console.log(req.body);
       const newEnrollmentData = await Enrollments.findOrCreate({
         where: {
           user_id: req.params.id,
