@@ -110,7 +110,7 @@ router.get('/profile', loginAuthentication, async (req, res) => {
     }
   });
 
-  console.log(users);
+  //console.log(users);
 
 
   res.render('profile', { 
@@ -174,7 +174,7 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
 
     const group = recordData.get({ plain: true });
   
-    console.log(users2);
+    //console.log(users2);
     res.render('group', { group, users, users2, loggedIn: true}); 
   } catch (err){
     console.log(err);
