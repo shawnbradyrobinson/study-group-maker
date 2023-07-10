@@ -1,3 +1,4 @@
+//submit clears out the contact form
 document.querySelector("#contact-form").addEventListener("submit", function(event) {
     event.preventDefault();
     document.querySelector("#name").value = "";
