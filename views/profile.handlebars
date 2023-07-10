@@ -115,9 +115,9 @@
                 </div>
             </div>
             <div>
-                <form class="form" class="add-user" action="">
-                    <label class="user-label" for="user_names">Add User: </label>
-                    <select name="user_names" class="select user_names">
+                <form id= "add-user-{{group.id}}" class="add-user form" action="">
+                    <label class="label" for="user_names">Add User: </label>
+                    <select class="select user_names" name="user_names">
                         {{!-- {{#unless enrollments.users.id}} --}}
                         {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>
                         {{/each}}
@@ -137,8 +137,8 @@
         {{/each}}
     </div>
     <script src="./js/enrollUser.js"></script>
+    <script src="/js/deleteGroup.js"></script>
     {{/if}}
    <script src="./js/groups.js"></script>
-    <script src="/js/deleteGroup.js"></script>
 
 </section>

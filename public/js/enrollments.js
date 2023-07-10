@@ -1,8 +1,9 @@
+//event handler that allows the user to join the group
 const enrollmentsHandler = async (event) => {
     event.preventDefault();
-    const study_group_id = document.querySelector('#enroll_user').parentNode.id.substring(6);
+    const study_group_id = document.querySelector('#enroll_user').parentNode.id.substring(6);// grabs parent id and removes text to get the id
     if (study_group_id) {
-      const response = await fetch(`/api/enrollments/`, {
+      const response = await fetch(`/api/enrollments/`, {//does a post fetch with the group id
         method: 'POST',
         body: JSON.stringify({ study_group_id }),
         headers: { 'Content-Type': 'application/json' },
@@ -14,28 +15,6 @@ const enrollmentsHandler = async (event) => {
       }
     }
   };
-
-// const deleteGroupHandler = async (event) => {
-
-//   if(event.target.hasAttribute('data-id')) {
-    
-//     const id = event.target.getAttribute('data-id');
-
-//     const response = await fetch(`/api/groups/${id}`, {
-
-//       method: 'DELETE',
-//     });
-
-//     if(response.ok) {
-
-//       document.location.replace('/profile');
-
-//     } else {
-
-//       alert('Could not delete project.')
-//     }
-//   }
-// };
 
   document
     .querySelector('#enroll_user')

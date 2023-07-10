@@ -134,6 +134,10 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
         {
           model: Topics,
           attributes: ['topic_name'],
+        },
+        {
+          model: Users,
+          attributes: ['first_name', 'last_name'],
         }
       ]
     });

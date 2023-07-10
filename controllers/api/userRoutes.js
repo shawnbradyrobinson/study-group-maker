@@ -3,7 +3,7 @@ const { Users } = require("../../models");
 
 router.get('/', (req, res) => {
     try{
-      console.log("Get from the api/users");
+      // console.log("Get from the api/users");
     res.status(200).send("Get from the api/users");
     } catch {
       console.log(err);
