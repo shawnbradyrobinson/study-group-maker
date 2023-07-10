@@ -137,11 +137,22 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
         }
       ]
     });
-    const userData = await Users.findAll({
-      where: {
-        id: {[Op.ne]: req.session.user_id}
-      }
+
+    const userData = await Groups.findByPk(req.params.id, {
+      include: [
+        { 
+          model: Groups, 
+          through: Enrollments, 
+          as: 'group_id',
+          attributes: { exclude: ['password'] },
+        },
+      ]
     });
+    // const userData = await Users.findAll({
+    //   where: {
+    //     id: {[Op.ne]: req.session.user_id}
+    //   }
+    // });
 
     const users = userData.map((user) => user.get({plain: true}));
 
