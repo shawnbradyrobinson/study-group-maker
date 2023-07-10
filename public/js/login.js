@@ -17,7 +17,9 @@ const loginFormHandler = async (event) => {
         // If successful, redirect the browser to the profile page
         document.location.replace('/profile');
       } else {
-        alert(response.statusText);
+        document.querySelector('#login-fail').textContent = "Username or Password is incorrect";
+        document.querySelector('#email-login').value = "";
+        document.querySelector('#password-login').value = "";
       }
     }
   };
@@ -41,8 +43,20 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/profile');
       } else {
-        alert(response.statusText);
+        document.querySelector('#signup-fail').textContent = "One or more fields has invalid input";
+        document.querySelector('#first-name-signup').value = "";
+        document.querySelector('#last-name-signup').value = "";
+        document.querySelector('#email-signup').value = "";
+        document.querySelector('#user-name-signup').value = "";
+        document.querySelector('#password-signup').value = "";
       }
+    } else {
+      document.querySelector('#signup-fail').textContent = "One or more fields are empty";
+      document.querySelector('#first-name-signup').value = "";
+      document.querySelector('#last-name-signup').value = "";
+      document.querySelector('#email-signup').value = "";
+      document.querySelector('#user-name-signup').value = "";
+      document.querySelector('#password-signup').value = "";
     }
   };
   

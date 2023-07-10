@@ -25,7 +25,7 @@
         <label class="label" for="user_names">Group Members: </label>
         <select class="select" name="user_names" id="user_names">
             {{!-- {{#unless enrollments.users.id}} --}}
-            {{#each users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}} </option>{{/each}}
+            {{#each users.group_id as |user|}}<option value="{{user.id}}">{{user.first_name}} {{user.last_name}} | {{user.user_name}} </option>{{/each}}
             {{!-- {{/unless}} --}}
         </select>
     </div>
