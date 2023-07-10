@@ -65,7 +65,7 @@
 }
 
 .about-card h3 {
-  font-size: 2.6rem;
+  font-size: clamp(1.5rem, 6vw, 2.6rem);
   transition: 0.5s ease;
 }
 
@@ -74,12 +74,12 @@
 }
 
 .about-card p {
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 4vw, 1.6rem);
   margin: 1rem 0 3rem;
 }
 
 .about-card {
-  
+
 }
 
 .about-card:nth-child(1) {
@@ -101,4 +101,10 @@
   background-size: cover;
   background-blend-mode: multiply;
   background-color: rgba(53, 53, 53, 0.57);
+}
+
+@media (max-width: 400px) {
+  .about-card:nth-child(3) {
+    background-color:  rgba(0, 0, 0, 0.57);
+  }
 }
