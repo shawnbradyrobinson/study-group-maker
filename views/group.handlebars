@@ -4,7 +4,7 @@
         <h2>
             <a href="/groups/{{group.id}}">{{group.group_name}}</a>
         </h2>
-        <p>Description: {{group.description}}</p>
+        <p>Description: {{group.group_description}}</p>
         <p>
             Study Topic: {{group.topic.topic_name}}!
         </p>
@@ -15,7 +15,10 @@
             Time to Meet: {{group.meet_time}}
         </p>
         <p>
-            Created by: {{group.created_by}}
+            Created by: {{users2.user.first_name}} {{users2.user.last_name}}
+        </p>
+        <p>
+            Meeting Link <a href="{{group.zoom_link}}">{{group.zoom_link}}</a>
         </p>
     
     <div id= "group_{{group.id}}">

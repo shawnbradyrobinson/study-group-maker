@@ -82,6 +82,7 @@
 }
 .user-group-list-card {
     flex-direction: column;
+    gap: 1rem;
    
 }
 #user-group-list .user-group-list-card:hover {
@@ -99,10 +100,12 @@
     color: var(--main-color);
 }
 
-#add-user label {
+#user-group-list label {
   color: var(--text-color);
+  font-size: clamp(1rem, 6vw, 1.5rem);
 }
-#add-user .button {
+
+ .button {
   color: var(--main-color);
   margin-top: 1rem;
 }
@@ -134,12 +137,20 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 741px) {
     .profileImg {
         display: none;
     }
     
     .formWrapper {
         width: 60vw;
+    }
+
+    #profile {
+        height: 400vh;
+    }
+
+    #user-group-list {
+        justify-content: center;
     }
 }

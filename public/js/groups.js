@@ -1,3 +1,4 @@
+  //takes form values and posts to groups api
   const groupFormHandler = async (event) => {
     event.preventDefault();
     const group_name = document.querySelector('#group_name').value.trim();

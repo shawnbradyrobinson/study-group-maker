@@ -110,7 +110,7 @@ router.get('/profile', loginAuthentication, async (req, res) => {
     }
   });
 
-  //console.log(enrollments.user_id);
+  console.log(users);
 
 
   res.render('profile', { 
@@ -134,6 +134,10 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
         {
           model: Topics,
           attributes: ['topic_name'],
+        },
+        {
+          model: Users,
+          attributes: ['first_name', 'last_name'],
         }
       ]
     });
@@ -148,19 +152,30 @@ router.get('/groups/:id', loginAuthentication, async (req, res) => {
         },
       ]
     });
+
+    const userData2 = await Groups.findByPk(req.params.id, {
+      include: [
+        {
+          model: Users,
+          attributes: ['first_name', 'last_name'],
+        },
+      ]
+    })
     // const userData = await Users.findAll({
     //   where: {
     //     id: {[Op.ne]: req.session.user_id}
     //   }
     // });
 
+    const users2 = userData2.get({ plain: true});
+
     const users = userData.get({ plain: true });
 
 
     const group = recordData.get({ plain: true });
   
-    console.log(users);
-    res.render('group', { group, users, loggedIn: true}); 
+    console.log(users2);
+    res.render('group', { group, users, users2, loggedIn: true}); 
   } catch (err){
     console.log(err);
     res.status(500).json(err);

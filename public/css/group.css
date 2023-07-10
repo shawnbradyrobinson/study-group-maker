@@ -21,18 +21,18 @@
 }
 .group-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 2rem;
     margin: 0 2rem;
-    margin-top: 2rem;
+    margin-top: 6rem;
 }
 .group-container .info-card {
     display: flex;
     flex-wrap: wrap;
-    flex: 0 0 20rem;
+    flex: 0 0 30rem;
     justify-content: center;
     background: var(--bg-color);
-    padding: 3rem 2rem 4rem;
+    padding: 1.5rem 1rem 3rem;
     border-radius: 2rem;
     box-shadow: 0 .1rem .5rem var(--highlight-color);
     text-align: center;
@@ -42,6 +42,7 @@
 }
 .info-card {
     flex-direction: column;
+    gap: 1rem;
 
 }
 .group-container .info-card:hover {
