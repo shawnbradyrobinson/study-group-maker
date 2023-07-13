@@ -9,7 +9,10 @@ const enrollmentsHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        document.location.replace(`/groups/${study_group_id}`);
+        document.querySelector("#enroll-success").textContent = "Successfully joined group"
+        setTimeout(() => {
+          document.location.replace(`/groups/${study_group_id}`);
+        }, 3000);
       } else {
         alert(response.statusText);
       }

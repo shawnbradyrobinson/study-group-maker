@@ -69,14 +69,15 @@
                             <option value="PM">PM</option>
                         </select>
                         <select class="select" name="meet_timezone" id="meet_timezone">
-                            <option value="PT">PT</option>
-                            <option value="MT">MT</option>
-                            <option value="CT">CT</option>
-                            <option value="ET">ET</option>
+                            <option value="CST">CST</option>
+                            <option value="MST">MST</option>
+                            <option value="PST">CST</option>
+                            <option value="EST">EST</option>
 
                         </select>
                     </div>
                     <button class="button has-background-info-dark has-text-white mt-3" type="submit">Submit</button>
+                    <div id="group-fail" class="has-text-danger"></div>
                 </form>
             </div>
 
@@ -137,7 +138,7 @@
                 </div>
                 {{else}}
                 <div>
-                    <button class="exitButton buttonExit" data-id="{{group.id}}">Leave Group
+                    <button id="unenrolled-{{group.id}}" class="exitButton buttonExit" data-id="{{group.id}}">Leave
                 </div>
                 {{/if}}
             </div>
@@ -145,6 +146,7 @@
         </div>
         <script src="./js/enrollUser.js"></script>
         <script src="/js/deleteGroup.js"></script>
+        <script src="/js/unenrolled.js"></script>
         {{/if}}
         <script src="./js/groups.js"></script>
 

@@ -54,4 +54,27 @@ router.post('/:id', async (req, res) => {
 
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+
+    const enrollmentData = await Enrollments.destroy({
+      where: {
+        user_id: req.session.user_id,
+        study_group_id: req.params.id,
+      },
+    });
+
+    if (!enrollmentData) {
+      res.status(404).json({ msg: 'No enrollments found with this id.' });
+
+      return;
+    }
+
+    res.status(200).json(enrollmentData);
+  } catch (err) {
+
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router; 
