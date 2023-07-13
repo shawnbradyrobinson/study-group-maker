@@ -119,6 +119,12 @@
     padding: 0px;
 }
 
+.buttonExit {
+  color: var(--dark-color);
+  padding: 0.8rem;
+  border-radius: 5px;
+}
+
 @media (max-width: 1200px) {
     .profileImg { 
         border-radius: 8px;
