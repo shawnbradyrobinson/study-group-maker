@@ -23,8 +23,10 @@
       if (response.ok) {
         document.location.replace('/profile');
       } else {
-        alert(response.statusText);
+        document.querySelector("#group-fail").textContent = "One or more fields has invalid input";
       }
+    } else {
+      document.querySelector("#group-fail").textContent = "Cannot leave any fields empty";
     }
   };
   
