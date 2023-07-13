@@ -19,6 +19,7 @@
 
 .login-form .button {
     margin-top: 1rem;
+    color: var(--text-color);
 }
 
 .login-container {
@@ -47,4 +48,9 @@
 
 .signup-form .button {
     margin-top: 1rem;
+    color: var(--text-color);
+}
+
+#login .button:hover {
+    color: var(--dark-color);
 }
