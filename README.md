@@ -8,11 +8,12 @@
 ## **Description**
 Feeling stuck on your latest computer science assignment? Wanting to brush up on some content from earlier in the course before the final project? Looking to build up a strong network of peers with similar work ethic and career goals? If so, then the Study Group Maker application was built for you! 
 
-![A screenshot of the landing page for Study Group Maker](./public/images/readme1.png)
+![A screenshot of the landing page for Study Group Maker](./public/images/readme5.png)
 
 Study Group Maker allows users to:
 - Create an account so their information is private and organized just for them
 - Create new study groups on a wide range of computer science topics 
+- Add new users to groups they are in
 - Join existing study groups they can browse on the application 
 - Delete existing study groups if they are no longer relevant
 
@@ -22,19 +23,19 @@ The possibilities are endless, as long as the user's ambition to improve their s
 
 Users can create or join study groups based around any of the above study topics. 
 
-Users also choose between three skill levels when choosing a group: "Beginner", "Intermediate" and "Advanced". This way, users have the most benefiical study session possible, with people who may have similar questions or challenges. 
+Users also choose between three skill levels when choosing a group: "Beginner", "Intermediate" and "Advanced". This way, users have the most benefical study session possible, with people who may have similar questions or challenges. 
 
 Study groups also have a description section to become even more specified and focused, beyond just the general topic. 
 
 ![A screenshot of the set time to meet for a study group](./public/images/readme4.png)
 
-Study groups are also set at a distinct time, and have a field to provide a meet up link, whether that be a Zoom Invitation, a Google Meet, a Discord call, or whatever else the group is most comfortable with! With the hustle and bustle of everyday life, it was important for us to take the stress of finding WHEN and HOW to meet out of the equation! Now that information is organized and provided for you at the start. Whether you're a the earliest bird getting the worm in the morning on Zoom, or the latest-hooting night owl looking to chat on Discord, you will have the freedom to join a group that fits your scheduling needs! 
+Study groups are also set at a distinct time, and have a field to provide a meet up link, whether that be a Zoom Invitation, a Google Meet, a Discord call, or whatever else the group is most comfortable with! With the hustle and bustle of everyday life, it was important for us to take the stress of finding WHEN and HOW to meet out of the equation! Now that information is organized and provided for you at the start. Whether you're the earliest bird getting the worm in the morning on Zoom, or the latest-hooting night owl looking to chat on Discord, you will have the freedom to join a group that fits your scheduling needs! 
 
 
 
 
 
-![A screenshot of the "about" section](./public/images/readme2.png)
+![A screenshot of the "about" section](./public/images/readme6.png)
 
 
 
@@ -43,7 +44,7 @@ Study groups are also set at a distinct time, and have a field to provide a meet
 - Express.js is used for the backend controllers and server (https://expressjs.com/)
 - Handlebars is used for page rendering and templates (https://handlebarsjs.com/)
 - Bulma is used for styling (https://bulma.io/)
-- Anime.js is used as an additional technology for animation (https://animejs.com/)
+- Swiper.js is used as an additional technology to add a slider (https://swiperjs.com/)
 
 
 
